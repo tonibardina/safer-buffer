@@ -10,14 +10,14 @@ var safer = {}
 var key
 
 for (key in buffer) {
-  if (!buffer.hasOwnProperty(key)) continue
+  if (!Object.hasOwnProperty.call(buffer, key)) continue
   if (key === 'SlowBuffer' || key === 'Buffer') continue
   safer[key] = buffer[key]
 }
 
 var Safer = safer.Buffer = {}
 for (key in Buffer) {
-  if (!Buffer.hasOwnProperty(key)) continue
+  if (!Object.hasOwnProperty.call(Buffer, key)) continue
   if (key === 'allocUnsafe' || key === 'allocUnsafeSlow') continue
   Safer[key] = Buffer[key]
 }
